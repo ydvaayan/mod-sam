@@ -16,8 +16,7 @@ const Stage = () => {
     image: [image],
   } = useContext(AppContext)!;
 
-  const getClick = (x: number, y: number): modelInputProps => {
-    const clickType = 1;
+  const getClick = (x: number, y: number, clickType: number): modelInputProps => {
     return { x, y, clickType };
   };
 
@@ -32,7 +31,8 @@ const Stage = () => {
     const imageScale = image ? image.width / el.offsetWidth : 1;
     x *= imageScale;
     y *= imageScale;
-    const click = getClick(x, y);
+    const clickType = e.button === 0 ? 1 : e.button === 2 ? 0 : 0; // 1 for left click, 0 for right click
+    const click = getClick(x, y, clickType);
     if (click) {
       setClicks((prevClicks) => {
         // Ensure that prevClicks is not null or undefined

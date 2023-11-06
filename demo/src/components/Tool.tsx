@@ -50,15 +50,7 @@ const Tool = ({ handleMouseMove }: ToolProps) => {
       {image && (
         <img
           onMouseDown={(event) => {
-            if (event.button === 0) {
-              // Left-click logic
-              // You can put your left-click code here
-              handleMouseMove(event);
-            } else if (event.button === 2) {
-              // Right-click logic
-              // You can put your right-click code here
-              // handleRightClick();
-            }
+              handleMouseMove(event);      
           }
         }
           onMouseOut={() => _.defer(() => setMaskImg(null))}
