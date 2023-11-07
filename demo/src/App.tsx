@@ -18,8 +18,8 @@ const ort = require("onnxruntime-web");
 import npyjs from "npyjs";
 
 // Define image, embedding and model paths
-const IMAGE_PATH = "/assets/data/000000073118.jpg";
-const IMAGE_EMBEDDING = "/assets/data/000000073118.npy";
+const IMAGE_PATH = "/assets/data/0000000377670.jpg";
+const IMAGE_EMBEDDING = "/assets/data/0000000377670.npy";
 const MODEL_DIR = "../model/sam_onnx_quantized_example.onnx";
 
 const App = () => {
@@ -117,10 +117,10 @@ const App = () => {
         const output = results[model.outputNames[0]];
         // The predicted mask returned from the ONNX model is an array which is 
         // rendered as an HTML image using onnxMaskToImage() from maskUtils.tsx.
-        setMaskImg(onnxMaskToImage(output.data, output.dims[2], output.dims[2]));
+        setMaskImg(onnxMaskToImage(output.data, output.dims[2], output.dims[3]));
         const dataToSave = {
           "segmentation": output.data,
-          "width":output.dims[2],
+          "width":output.dims[3],
           "height":output.dims[2]
         };
         

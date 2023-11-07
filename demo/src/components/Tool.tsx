@@ -50,6 +50,7 @@ const Tool = ({ handleMouseMove }: ToolProps) => {
       {image && (
         <img
           onMouseDown={(event) => {
+              console.log("full BT")
               handleMouseMove(event);      
           }
         }

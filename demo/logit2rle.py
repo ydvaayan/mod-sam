@@ -41,16 +41,21 @@ if __name__ == "__main__":
     y_tensor=torch.tensor(y,dtype=torch.int32,device='cpu')
     y_tensor=y_tensor.unsqueeze(0)
     rle_masks=mask_to_rle_pytorch(y_tensor)
-    data={"annotations":[]}
+    with open(args.output_path, 'r') as json_file:
+        data = json.load(json_file)
+    if  not data:
+        data={"annotations":[]}
+
     new_ann={"segmentation":rle_masks,"image_id":args.image_id,"annotation_id":args.ann_id}
     data["annotations"].append(new_ann)
+
     
     with open(args.output_path, 'w') as f:
         json.dump(data, f)
-    # plt.imshow(y, cmap='gray')
-    # plt.title('Binary Mask')
-    # plt.colorbar()
-    # plt.show()
+    plt.imshow(y, cmap='gray')
+    plt.title('Binary Mask')
+    plt.colorbar()
+    plt.show()
 
 
     

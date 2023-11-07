@@ -8,6 +8,7 @@ from segment_anything.utils.onnx import SamOnnxModel
 import onnxruntime
 from onnxruntime.quantization import QuantType
 from onnxruntime.quantization.quantize import quantize_dynamic
+import argparse
 
 parser = argparse.ArgumentParser(
     description="Convert demo output to RLE format"
